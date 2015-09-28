@@ -8,15 +8,20 @@ ModelImporter:
     100000: //RootNode
     100002: Box001
     100004: Torus001
+    100006: Circle001
     400000: //RootNode
     400002: Box001
     400004: Torus001
+    400006: Circle001
     2300000: Box001
     2300002: Torus001
+    2300004: Circle001
     3300000: Box001
     3300002: Torus001
+    3300004: Circle001
     4300000: Box001
     4300002: Torus001
+    4300004: Circle001
   materials:
     importMaterials: 1
     materialName: 0
