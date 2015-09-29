@@ -118,13 +118,21 @@ public class BallSkinScript : MonoBehaviour
     {
         ballPrefabCombinations = new List<string[]>();
 
-        AddBallPair("ball_variant_comic", "ball_variant_comic2");
-        AddBallPair("ball_variant_foot", "ball_variant_foot");
-        AddBallPair("ball_variant_mesh", "ball_variant_mesh");
-        AddBallPair("ball_variant_rugged", "ball_variant_rugged");
-        AddBallPair("ball_variant_mesh", "ball_variant_rugged");
-        AddBallPair("ball_variant_foot", "ball_variant_rugged");
-        AddBallPair("ball_variant_foot", "ball_variant_mesh");
+        string[] possibleElements =
+        {
+            "ball_variant_foot",
+            "ball_variant_rugged",
+            "ball_variant_mesh"
+        };
+
+        // add any combination of the ball kinds
+        for (int i = 0; i < possibleElements.Length; ++i)
+        {
+            for (int j = 0; j < possibleElements.Length; ++j)
+            {
+                AddBallPair(possibleElements[i], possibleElements[j]);
+            }
+        }
     }
 
     private void AddBallPair(string ballName1, string ballName2)
