@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class MatchManagerScript : MonoBehaviour
 {
@@ -7,10 +8,15 @@ public class MatchManagerScript : MonoBehaviour
     ///  Time after which the round restarts. In seconds.
     /// </summary>
     public float RestartTimeout = 2.0f;
+    public Text VictoryText = null;
     private bool DidScheduleRestart = false;
 
     void Start()
     {
+        if (VictoryText != null)
+        {
+            VictoryText.text = "";
+        }
         DidScheduleRestart = false;
     }
 
@@ -18,10 +24,32 @@ public class MatchManagerScript : MonoBehaviour
     {
         if (DidScheduleRestart == false)
         {
-            Debug.Log(string.Format("Player with tag {0} died. Restarting match...", tag));
-
             DidScheduleRestart = true;
+            SetVictoryStringForLosingPlayerWithTag(tag);
             StartCoroutine(RestartAfterTime(RestartTimeout));
+        }
+    }
+
+    /// <summary>
+    /// Sets victory text to a basic message.
+    /// </summary>
+    /// <param name="victorTag"></param>
+    private void SetVictoryStringForLosingPlayerWithTag(string victorTag)
+    {
+        if (VictoryText != null)
+        {
+            string text = "Player ";
+            if (victorTag == "Player2")
+            {
+                text += "1";
+            }
+            else
+            {
+                text += "2";
+            }
+            text += " won the round!";
+
+            VictoryText.text = text;
         }
     }
 
