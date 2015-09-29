@@ -35,22 +35,46 @@ namespace UnityStandardAssets.Vehicles.Ball
             }
         }
 
-
-        private void Update()
+        /// <summary>
+        /// Fills horizontal & vertical with values from controller/keyboard.
+        /// </summary>
+        /// <param name="horizontal">Horizontal axis output value.</param>
+        /// <param name="vertical">Vertical axis output value.</param>
+        /// <param name="targetGameObject">Game object to look for tag on. Should be player's ball game object.</param>
+        public static void GetInputValues(out float horizontal, out float vertical, GameObject targetGameObject)
         {
-            // Get the axis and jump input.
-
             string axisHorizontal = "Horizontal";
             string axisVertical = "Vertical";
-            if (gameObject.tag == "Player2")
+            if (targetGameObject.tag == "Player2")
             {
                 axisHorizontal += "2";
                 axisVertical += "2";
             }
 
-            float h = CrossPlatformInputManager.GetAxis(axisHorizontal);
-            float v = CrossPlatformInputManager.GetAxis(axisVertical);
+            horizontal = CrossPlatformInputManager.GetAxis(axisHorizontal);
+            vertical = CrossPlatformInputManager.GetAxis(axisVertical);
             //jump = CrossPlatformInputManager.GetButton("Jump");
+
+            // check for keyboard input
+            if (horizontal == 0)
+            {
+                axisHorizontal += "Keyboard";
+                horizontal = CrossPlatformInputManager.GetAxis(axisHorizontal);
+            }
+
+            if (vertical == 0)
+            {
+                axisVertical += "Keyboard";
+                vertical = CrossPlatformInputManager.GetAxis(axisVertical);
+            }
+        }
+
+        private void Update()
+        {
+            // Get the axis and jump input.
+            float h = 0;
+            float v = 0;
+            GetInputValues(out h, out v, gameObject);           
 
             // calculate move direction
             if (cam != null)

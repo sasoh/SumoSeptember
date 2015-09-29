@@ -22,7 +22,7 @@ public class ThrustScript : MonoBehaviour
         if (timeSinceLastThrust >= ThrustTimeout)
         {
             if (isThrustKeyPressed() == true)
-            { 
+            {
                 ApplyThrust();
             }
         }
@@ -46,11 +46,13 @@ public class ThrustScript : MonoBehaviour
             buttonName += "2";
         }
 
-        if (Input.GetButtonDown(buttonName) == true)
+        result = Input.GetButtonDown(buttonName);
+        if (result == false)
         {
-            result = true;
+            buttonName += "Keyboard";
+            result = Input.GetButtonDown(buttonName);
         }
-
+        
         return result;
     }
 
@@ -59,18 +61,15 @@ public class ThrustScript : MonoBehaviour
         /// Reset last thrust time.
         timeSinceLastThrust = 0.0f;
 
-        /// Apply thrust in the heading direction.            
-        string axisHorizontal = "Horizontal";
-        string axisVertical = "Vertical";
-        if (gameObject.tag == "Player2")
-        {
-            axisHorizontal += "2";
-            axisVertical += "2";
-        }
+        /// Apply thrust in the heading direction.
+        float h = 0.0f;
+        float v = 0.0f;
+        UnityStandardAssets.Vehicles.Ball.BallUserControl.GetInputValues(out h, out v, gameObject);
 
         Vector3 directionVector = new Vector3();
-        directionVector.x = Input.GetAxis(axisHorizontal);
-        directionVector.z = Input.GetAxis(axisVertical);
+        directionVector.x = h;
+        directionVector.z = v;
+
         rb.AddForce(directionVector * ForceMultiplier, ForceMode.Impulse);
     }
 }
