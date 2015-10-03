@@ -3,13 +3,12 @@ using System.Collections;
 
 public class EdgeDestructorScript : MonoBehaviour
 {
-    public MatchManagerScript MatchManager = null;
-    public GameObject ExplosionPrefab = null;
-
-    void Start()
-    {
-        Debug.Assert(MatchManager != null, "Match manager object not set.");
-    }
+    public MatchManagerScript MatchManager {
+		get { return MatchManagerScript.Instance; }
+	}
+    public GameObject ExplosionPrefab {
+		get { return MatchManager.explosionPrefab; }
+	}
 
     void OnCollisionEnter(Collision collision)
     {
