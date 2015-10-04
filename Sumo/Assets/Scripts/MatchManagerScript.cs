@@ -106,7 +106,17 @@ public class MatchManagerScript : MonoBehaviour
     {
         yield return new WaitForSeconds(time);
 
-        /// Restart game
-        Application.LoadLevel(Application.loadedLevel);
+        LoadRandomLevel();
+    }
+
+    private void LoadRandomLevel()
+    {
+        string[] levelNames = {
+            "MatchScene",
+            "MatchSceneSquare",
+            "MatchSceneHole"
+        };
+        int randomIndex = Random.Range(0, levelNames.Length);
+        Application.LoadLevel(levelNames[randomIndex]);
     }
 }
