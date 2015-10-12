@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MenuSceneManagerScript : MonoBehaviour
 {
-
     // Use this for initialization
     void Start()
     {
@@ -24,7 +23,7 @@ public class MenuSceneManagerScript : MonoBehaviour
     /// </summary>
     public void DidPressButtonPlay()
     {
-        Application.LoadLevel("MatchScene");
+        Application.LoadLevel("LevelSelectionScene");
     }
 
     /// <summary>

@@ -76,12 +76,13 @@
   <ItemGroup>
     <Compile Include="Assets\Fx Explosion Pack\Script\DestroyEffect.cs" />
     <Compile Include="Assets\Fx Explosion Pack\Script\csLightControl.cs" />
-    <Compile Include="Assets\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\ArenaFloorScript.cs" />
     <Compile Include="Assets\Scripts\BallSkinScript.cs" />
     <Compile Include="Assets\Scripts\EdgeDestructorScript.cs" />
+    <Compile Include="Assets\Scripts\Level Selection\LevelSelectSceneManagerScript.cs" />
     <Compile Include="Assets\Scripts\MatchManagerScript.cs" />
     <Compile Include="Assets\Scripts\Menu\MenuSceneManagerScript.cs" />
+    <Compile Include="Assets\Scripts\ScoreUI.cs" />
     <Compile Include="Assets\Scripts\ThrustScript.cs" />
   </ItemGroup>
   <ItemGroup>

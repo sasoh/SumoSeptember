@@ -63,7 +63,7 @@ public class MatchManagerScript : MonoBehaviour
         }
         if (Input.GetButtonDown("Quit") == true)
         {
-            Application.Quit();
+            Application.LoadLevel("MenuScene");
         }
     }
 
@@ -105,18 +105,7 @@ public class MatchManagerScript : MonoBehaviour
     IEnumerator RestartAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-
-        LoadRandomLevel();
-    }
-
-    private void LoadRandomLevel()
-    {
-        string[] levelNames = {
-            "MatchScene",
-            "MatchSceneSquare",
-            "MatchSceneHole"
-        };
-        int randomIndex = Random.Range(0, levelNames.Length);
-        Application.LoadLevel(levelNames[randomIndex]);
+        
+        LevelSelectSceneManagerScript.LoadNextLevel();
     }
 }
