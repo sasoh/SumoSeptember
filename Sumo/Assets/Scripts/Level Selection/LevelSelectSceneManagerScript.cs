@@ -26,7 +26,7 @@ public class LevelSelectSceneManagerScript : MonoBehaviour
     void Start()
     {
         // reset selection
-        LevelSelected = 1;
+        LevelSelected = 0;
     }
 
     public void DidPressButtonPlay()
