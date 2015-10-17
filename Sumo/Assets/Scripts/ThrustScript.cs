@@ -8,11 +8,19 @@ public class ThrustScript : MonoBehaviour
     private Rigidbody rb = null;
     private float timeSinceLastThrust = 0.0f;
 
+    public BallTrackerScript Tracker = null;
+
     // Use this for initialization
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         Debug.Assert(rb != null, "Rigidbody not set for thrust script. No thrusting will occur.");
+
+        timeSinceLastThrust = ThrustTimeout;
+        if (Tracker != null)
+        {
+            Tracker.ShowTracker();
+        }
     }
 
     // Update is called once per frame
@@ -21,9 +29,19 @@ public class ThrustScript : MonoBehaviour
         timeSinceLastThrust += Time.deltaTime;
         if (timeSinceLastThrust >= ThrustTimeout)
         {
+            if (Tracker != null)
+            {
+                Tracker.ShowTracker();
+            }
+
             if (isThrustKeyPressed() == true)
             {
                 ApplyThrust();
+
+                if (Tracker != null)
+                {
+                    Tracker.HideTracker();
+                }
             }
         }
     }
