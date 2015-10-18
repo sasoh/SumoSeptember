@@ -23,7 +23,8 @@ public class MenuSceneManagerScript : MonoBehaviour
     /// </summary>
     public void DidPressButtonPlay()
     {
-        Application.LoadLevel("LevelSelectionScene");
+        //Application.LoadLevel("LevelSelectionScene");
+        Application.LoadLevel("MatchScene");
     }
 
     /// <summary>
