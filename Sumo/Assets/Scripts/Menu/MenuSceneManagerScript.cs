@@ -24,6 +24,11 @@ public class MenuSceneManagerScript : MonoBehaviour
     public void DidPressButtonPlay()
     {
         //Application.LoadLevel("LevelSelectionScene");
+        Application.LoadLevel("MatchSingle01Scene");
+    }
+
+    public void DidPressButtonPlayMulti()
+    {
         Application.LoadLevel("MatchScene");
     }
 

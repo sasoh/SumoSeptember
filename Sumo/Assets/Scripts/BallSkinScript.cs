@@ -24,9 +24,6 @@ public class BallSkinScript : MonoBehaviour
     /// </summary>
     private void RemoveBallModels()
     {
-        Debug.Assert(Ball1 != null, "Ball 1 poitner not set.");
-        Debug.Assert(Ball2 != null, "Ball 2 poitner not set.");
-
         RemoveModelForBall(Ball1);
         RemoveModelForBall(Ball2);
     }
@@ -37,14 +34,22 @@ public class BallSkinScript : MonoBehaviour
     /// <param name="ball"></param>
     private void RemoveModelForBall(GameObject ball)
     {
-        MeshRenderer renderer = ball.GetComponent<MeshRenderer>();
-        if (renderer != null)
+        if (ball != null)
         {
-            renderer.enabled = false;
+
+            MeshRenderer renderer = ball.GetComponent<MeshRenderer>();
+            if (renderer != null)
+            {
+                renderer.enabled = false;
+            }
+            else
+            {
+                Debug.Log("Failed getting mesh renderer for object " + ball);
+            }
         }
         else
         {
-            Debug.Log("Failed getting mesh renderer for object " + ball);
+            Debug.Log("Ball game object not set");
         }
     }
 
@@ -107,7 +112,7 @@ public class BallSkinScript : MonoBehaviour
 
         string path = "Prefab/Balls/" + name;
         result = (GameObject)Resources.Load(path);
-        
+
         return result;
     }
 

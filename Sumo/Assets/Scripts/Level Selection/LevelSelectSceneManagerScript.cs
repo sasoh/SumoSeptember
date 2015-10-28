@@ -45,17 +45,19 @@ public class LevelSelectSceneManagerScript : MonoBehaviour
     /// </summary>
     public static void LoadNextLevel()
     {
-        int selectedLevel = 0;
-        if (PlayerPrefs.HasKey(LevelKey) == true)
-        {
-            selectedLevel = PlayerPrefs.GetInt(LevelKey);
-        }
+        //int selectedLevel = 0;
+        //if (PlayerPrefs.HasKey(LevelKey) == true)
+        //{
+        //    selectedLevel = PlayerPrefs.GetInt(LevelKey);
+        //}
 
-        int sceneIndex = selectedLevel;
-        if (selectedLevel == LevelSceneNames.Length)
-        {
-            sceneIndex = Random.Range(0, LevelSceneNames.Length);
-        }
-        Application.LoadLevel(LevelSceneNames[sceneIndex]);
+        //int sceneIndex = selectedLevel;
+        //if (selectedLevel == LevelSceneNames.Length)
+        //{
+        //    sceneIndex = Random.Range(0, LevelSceneNames.Length);
+        //}
+        //Application.LoadLevel(LevelSceneNames[sceneIndex]);
+
+        Application.LoadLevel(Application.loadedLevel);
     }
 }

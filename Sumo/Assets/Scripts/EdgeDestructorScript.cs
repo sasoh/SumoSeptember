@@ -19,8 +19,8 @@ public class EdgeDestructorScript : MonoBehaviour
             if (ExplosionPrefab != null)
             {
                 Vector3 explosionPosition = transform.position;
-                /// Lower explosion position's Y to ground level.
-                explosionPosition.y = 0.0f;
+                /// Lower explosion position's Y so it looks like ground level
+                explosionPosition.y -= 0.5f;
                 Instantiate(ExplosionPrefab, explosionPosition, Quaternion.identity);
             }
 
