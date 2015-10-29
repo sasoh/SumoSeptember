@@ -1,11 +1,11 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp-firstpass.csproj", "{3BF095B5-A125-C884-1689-B468BF5C0FDA}"
+Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp-firstpass-vs.csproj", "{3BF095B5-A125-C884-1689-B468BF5C0FDA}"
 EndProject
-Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp.csproj", "{1C70BB82-36C0-EE4D-C9A9-3E34CC61BEDF}"
+Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp-vs.csproj", "{1C70BB82-36C0-EE4D-C9A9-3E34CC61BEDF}"
 EndProject
-Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp-Editor.csproj", "{A1057FD4-57D1-4C52-9D05-F2B37343137E}"
+Project("{D527E602-06A9-DD37-9900-5FE6C0A03C1E}") = "Sumo", "Assembly-CSharp-Editor-vs.csproj", "{A1057FD4-57D1-4C52-9D05-F2B37343137E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,7 +29,7 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-				GlobalSection(MonoDevelopProperties) = preSolution
+					GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
