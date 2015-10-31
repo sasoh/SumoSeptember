@@ -21,6 +21,11 @@ namespace UnityStandardAssets.Vehicles.Ball
             GetComponent<Rigidbody>().maxAngularVelocity = m_MaxAngularVelocity;
         }
 
+        void Update()
+        {
+            // double gravity
+            m_Rigidbody.AddForce(Vector3.down * 1000.0f * Time.deltaTime);
+        }
 
         public void Move(Vector3 moveDirection, bool jump)
         {

@@ -12,7 +12,7 @@ public class EdgeDestructorScript : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "LevelEdge")
+        if (collision.gameObject.CompareTag("LevelEdge") == true)
         {
             MatchManager.PlayerDied(gameObject.tag);
 

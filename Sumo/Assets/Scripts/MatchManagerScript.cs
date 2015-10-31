@@ -12,6 +12,11 @@ public class MatchManagerScript : MonoBehaviour
     public GameObject explosionPrefab;
 
     public Text VictoryText = null;
+
+    public bool IsMultiplayer = true;
+
+    public Text TimerText = null;
+
     private bool DidScheduleRestart = false;
 
     private static MatchManagerScript _instance;
@@ -45,6 +50,10 @@ public class MatchManagerScript : MonoBehaviour
         }
     }
 
+    float TimeSinceStart = 0.0f;
+
+    bool MatchEnded = false;
+
     public void Awake()
     {
         _instance = this;
@@ -65,6 +74,25 @@ public class MatchManagerScript : MonoBehaviour
         {
             Application.LoadLevel("MenuScene");
         }
+
+        UpdateTimeSinceStart();
+    }
+
+    void UpdateTimeSinceStart()
+    {
+        TimeSinceStart += Time.deltaTime;
+        
+        UpdateTimeSinceStartText();
+    }
+
+    void UpdateTimeSinceStartText()
+    {
+        if (TimerText != null && MatchEnded == false)
+        {
+            string text = string.Format("{0:0.00}s", TimeSinceStart);
+
+            TimerText.text = text;
+        }
     }
 
     public void PlayerDied(string tag)
@@ -83,29 +111,54 @@ public class MatchManagerScript : MonoBehaviour
     /// <param name="victorTag"></param>
     private void SetVictoryStringForLosingPlayerWithTag(string victorTag)
     {
-        if (VictoryText != null)
+        if (MatchEnded == false)
         {
-            string text = "Player ";
-            if (victorTag == "Player2")
-            {
-                Score1 += 1;
-                text += "1";
-            }
-            else
-            {
-                Score2 += 1;
-                text += "2";
-            }
-            text += " won the round!";
+            MatchEnded = true;
 
-            VictoryText.text = text;
+            if (VictoryText != null)
+            {
+                string text = "Player ";
+
+                if (IsMultiplayer == true)
+                {
+                    if (victorTag == "Player2")
+                    {
+                        Score1 += 1;
+                        text += "1";
+                    }
+                    else
+                    {
+                        Score2 += 1;
+                        text += "2";
+                    }
+                    text += " won the round!";
+                }
+                else
+                {
+                    text = "Attempt unsuccessful, try again.";
+                }
+
+                VictoryText.text = text;
+            }
         }
     }
 
     IEnumerator RestartAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
-        
+
         LevelSelectSceneManagerScript.LoadNextLevel();
+    }
+
+    public void DidReachFinish()
+    {
+        if (MatchEnded == false)
+        {
+            MatchEnded = true;
+
+            string text = string.Format("Victory! The course took you {0} seconds to complete!\nPress Q to go back to the menu.", TimeSinceStart);
+
+            VictoryText.text = text;
+        }
     }
 }
