@@ -2,7 +2,7 @@
 
 Small sumo-like versus game.
 
-* As of 17.11.2015 the Sumo game is moving into commercial production. No new builds are expected here.
+* As of 17.11.2015 the Sumo game is moving into production. No new builds are expected here.
 
 [Latest Windows build](https://sourceforge.net/projects/sumoseptember/files/latest/download)
 
